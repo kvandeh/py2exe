@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% endblock %}
+
+
+{% block body %}
+
+<h1>Your conversion is being processed</h1>
+<h3>status: {{ status }}</h3>
+<small>reload the page to update status</small>
+
+{% if download %}
+<a href="{{ download }}">download</a>
+<a href="{{ url_for('convert') }}">convert another python file</a>
+{% endif %}
+
+{% endblock %}

@@ -1,5 +1,5 @@
 from app import app
-from flask import flash, render_template, redirect, url_for, jsonify, abort, request
+from flask import flash, render_template, redirect, url_for, jsonify, abort, request, send_file
 from .utils import allowed_file, random_hex_token, start_conversion
 from werkzeug.utils import secure_filename
 import os
@@ -24,3 +24,18 @@ def convert():
     start_conversion.delay(token)
 
     return token
+
+@app.route('/convert/<conversion_id>/download')
+def download_conversion(conversion_id):
+    if os.path.exists(f"instance/conversions/{conversion_id}/output.zip"):
+        return send_file(f"../instance/conversions/{conversion_id}/output.zip")
+    abort(404)
+
+@app.route('/convert/<conversion_id>')
+def view_conversion(conversion_id):
+    with open(f"instance/conversions/{conversion_id}/info.txt", "r") as info_file:
+        status = list(info_file.readlines())[-1]
+        download = None
+        if "download" in status:
+            download = url_for('download_conversion', conversion_id=conversion_id)
+    return render_template("view_conversion.html", status=status, download=download)

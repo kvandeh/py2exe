@@ -12,30 +12,5 @@
     data-max-files="1">
 
 <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
-<script>
-    FilePond.setOptions({
-        server: {
-            process: {
-                url: '/convert',
-                method: 'POST',
-                onload: (response) => {
-                    return response;
-                },
-            },
-        },
-    });
-
-    FilePond.create(
-        document.querySelector('input'),
-        {
-            instantUpload: true,
-        }
-    );
-
-    document.querySelector(".filepond").addEventListener("FilePond:processfile", (e) => {
-        if (e.detail.error) return
-        let response = e.detail.file.serverId
-        console.log(response)
-    })
-</script>
+<script src="{{ url_for('static', filename='js/convert.js') }}"></script>
 {% endblock %}

@@ -18,6 +18,6 @@ def convert(directory):
             if os.path.exists(f"instance/conversions/{directory}/dist/{filename.split(".")[0]}/{filename.split(".")[0]}.exe"):
                 info_file.write("Finshed conversion successfully\n")
             
-            info_file.write("Starting zip archive creation")
+            info_file.write("Starting zip archive creation\n")
             shutil.make_archive(f"instance/conversions/{directory}/output", "zip", f"instance/conversions/{directory}/dist")
             info_file.write("Created zip archive - ready for download")
