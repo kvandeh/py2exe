@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
+{% endblock %}
+
+
+{% block body %}
+<input type="file" 
+    class="filepond"
+    name="filepond" 
+    data-max-files="1">
+
+<script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
+<script>
+    FilePond.setOptions({
+        server: {
+            process: {
+                url: '/convert',
+                method: 'POST',
+                onload: (response) => {
+                    return response;
+                },
+            },
+        },
+    });
+
+    FilePond.create(
+        document.querySelector('input'),
+        {
+            instantUpload: true,
+        }
+    );
+
+    document.querySelector(".filepond").addEventListener("FilePond:processfile", (e) => {
+        if (e.detail.error) return
+        let response = e.detail.file.serverId
+        console.log(response)
+    })
+</script>
+{% endblock %}
