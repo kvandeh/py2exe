@@ -1,6 +1,6 @@
 from app import app
 from flask import flash, render_template, redirect, url_for, jsonify, abort, request
-from .utils import allowed_file, random_hex_token
+from .utils import allowed_file, random_hex_token, start_conversion
 from werkzeug.utils import secure_filename
 import os
 
@@ -18,7 +18,9 @@ def convert():
     filename = secure_filename(file.filename)
     token = random_hex_token()
     
-    os.mkdir(f"instance/{token}")
-    file.save(f"instance/{token}/{filename}")
+    os.mkdir(f"instance/conversions/{token}")
+    file.save(f"instance/conversions/{token}/{filename}")
+
+    start_conversion.delay(token)
 
     return token
