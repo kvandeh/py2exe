@@ -7,12 +7,16 @@
     --button-color: var(--primary-color);
     --button-hover-color: #ffe83a;
     --link-color: var(--text-color);
+    --navbar-bg-color: #141200;
+    --division-line-color: #2c2a1a;
 }
 
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
     font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 .content {
@@ -24,7 +28,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     padding-left: 1vw;
-    padding-top: 80px;
+    padding-top: 120px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -33,6 +37,10 @@ body {
 
 a {
     color: var(--link-color);
+}
+
+p {
+    font-size: 1.2rem;
 }
 
 .button-link {
@@ -51,4 +59,27 @@ a {
 
 .button-link:hover {
     background-color: var(--button-hover-color);
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    position: fixed;
+    width: 100vw;
+    height: 70px;
+    border-bottom: 1px solid var(--division-line-color);
+    padding: .5rem;
+    background-color: var(--navbar-bg-color);
+}
+
+.navbar a.heading {
+    font-size: 3rem;
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 1rem;
+    position: relative;
+    padding: 11px 14px 11px 14px;
+    font-family: "trebuchet ms", 'Roboto', sans-serif;
 }
