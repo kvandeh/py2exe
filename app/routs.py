@@ -38,4 +38,5 @@ def view_conversion(conversion_id):
         download = None
         if "download" in status:
             download = url_for('download_conversion', conversion_id=conversion_id)
-    return render_template("view_conversion.html", status=status, download=download)
+    original_files = [fn for fn in os.listdir(f"instance/conversions/{conversion_id}") if fn.endswith(".py")]
+    return render_template("view_conversion.html", status=status, download=download, filenames=original_files)
