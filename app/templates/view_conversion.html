@@ -10,7 +10,7 @@
     }
 
     .download {
-        margin: 1rem;
+        margin: 1rem 0;
         font-size: 1.7rem;
     }
 </style>
@@ -18,14 +18,25 @@
 
 
 {% block body %}
-
-<h1>Your conversion is being processed - <i>
-    {% for filename in filenames %}
-    {{ filename }}
-    {% endfor %}
-</i></h1>
-
-<h3>status: <div class="status">{{ status }}<a href="" style="padding-left: .5rem;"><i class="fa-solid fa-rotate-right"></i></a></div></h3>
+<div>
+    {% if download %}
+        <h1>Conversion finished - <i>
+            {% for filename in filenames %}
+            {{ filename }}
+            {% endfor %}
+            </i></h1>
+    {% else %}
+        <h1>Your conversion is being processed - <i>
+            {% for filename in filenames %}
+            {{ filename }}
+            {% endfor %}
+            </i></h1>
+        <p>It can take up to several minutes to process your python files depending on their complexity.
+                You can watch the process below. Please refresh the page to update status.</p>
+    {% endif %}
+    
+    <div class="status">status: {{ status }}<a href="" style="padding-left: .5rem;"><i class="fa-solid fa-rotate-right"></i></a></div>    
+</div>
 
 {% if download %}
 <a class="button-link download" href="{{ download }}">DOWNLOAD <i class="fa fa-download"></i></a>
