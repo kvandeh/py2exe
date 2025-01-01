@@ -10,7 +10,10 @@ def write_to_info_file(directory, message):
 def run_pyinstaller(directory, filename):
     initial_dir = os.getcwd()
     os.chdir(f"instance/conversions/{directory}")
-    _ = os.system(f"pyinstaller {filename} --onedir")
+    if os.name == 'nt': # if running on windows
+        _ = os.system(f"pyinstaller {filename} --onedir")
+    else:
+        _ = os.system(f"wine wine/drive_c/python3.12/python.exe -m PyInstaller {filename} --onedir")
     os.chdir(initial_dir)
 
 def convert(directory):
