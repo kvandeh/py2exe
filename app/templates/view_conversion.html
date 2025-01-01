@@ -22,13 +22,13 @@
     {% if download %}
         <h1>Conversion finished - <i>
             {% for filename in filenames %}
-            {{ filename }}
+            <small>{{ filename }} </small>
             {% endfor %}
             </i></h1>
     {% else %}
         <h1>Your conversion is being processed - <i>
             {% for filename in filenames %}
-            {{ filename }}
+            <small>{{ filename }} </small>
             {% endfor %}
             </i></h1>
         <p>It can take up to several minutes to process your python files depending on their complexity.

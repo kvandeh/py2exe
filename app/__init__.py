@@ -4,7 +4,7 @@ from celery import Celery, Task
 app = Flask(__name__)
 app.secret_key = 'dev'
 
-app.config["ALLOWED_EXTENSIONS"] = "py"
+app.config["ALLOWED_EXTENSIONS"] = ["py", "zip"]
 app.config["CELERY"] = dict(
         broker_url="amqp://test:test@localhost:5672",
         task_ignore_result=True,

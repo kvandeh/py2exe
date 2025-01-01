@@ -33,10 +33,12 @@ def download_conversion(conversion_id):
 
 @app.route('/convert/<conversion_id>')
 def view_conversion(conversion_id):
+    original_files = [fn for fn in os.listdir(f"instance/conversions/{conversion_id}") if fn.endswith(".py") or fn.endswith(".zip")]
+    if not os.path.exists(f"instance/conversions/{conversion_id}/info.txt"):
+        return render_template("view_conversion.html", status="Your conversion is in queue", download=None, filenames=original_files)
     with open(f"instance/conversions/{conversion_id}/info.txt", "r") as info_file:
         status = list(info_file.readlines())[-1]
         download = None
         if "download" in status:
             download = url_for('download_conversion', conversion_id=conversion_id)
-    original_files = [fn for fn in os.listdir(f"instance/conversions/{conversion_id}") if fn.endswith(".py")]
     return render_template("view_conversion.html", status=status, download=download, filenames=original_files)
