@@ -13,7 +13,7 @@ def run_pyinstaller(directory, filename):
     if os.name == 'nt': # if running on windows
         _ = os.system(f"pyinstaller {filename} --onedir")
     else:
-        _ = os.system(f"wine ../../../wine/drive_c/python3.12/python.exe -m PyInstaller {filename} --onedir")
+        _ = os.system(f"wine {initial_dir}/wine/drive_c/python3.12/python.exe -m PyInstaller {filename} --onedir")
     os.chdir(initial_dir)
 
 def convert(directory):
