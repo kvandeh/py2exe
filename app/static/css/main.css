@@ -1,5 +1,5 @@
 :root {
-    --bg-color: #141200;
+    --bg-color: #000314;
     --text-color: #fefad0;
     --primary-color: #fded6c;
     --secondary-color: #0f3234;
@@ -7,7 +7,7 @@
     --button-color: var(--primary-color);
     --button-hover-color: #ffe83a;
     --link-color: var(--text-color);
-    --navbar-bg-color: #141200;
+    --navbar-bg-color: #000314;
     --division-line-color: #2c2a1a;
 }
 
