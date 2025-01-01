@@ -35,7 +35,9 @@
                 You can watch the process below. Please refresh the page to update status.</p>
     {% endif %}
     
-    <div class="status">status: {{ status }}<a href="" style="padding-left: .5rem;"><i class="fa-solid fa-rotate-right"></i></a></div>    
+    {% if not download %}
+    <div class="status">status: {{ status }}<a href="" style="padding-left: .5rem;"><i class="fa-solid fa-rotate-right"></i></a></div>
+    {% endif %}
 </div>
 
 {% if download %}
