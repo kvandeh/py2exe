@@ -67,7 +67,7 @@ def convert(directory):
                 write_to_info_file(directory, f"Conversion failed: Please rename the root file of your project to main.py or run.py")
                 return False
             if "requirements.txt" in os.listdir(f"instance/conversions/{directory}"):
-                write_to_info_file("Creating virtual environment")
+                write_to_info_file(directory, "Creating virtual environment")
                 create_venv(directory)
             write_to_info_file(directory, f"Converting - {root_file}\n")
             run_pyinstaller(directory, root_file)
