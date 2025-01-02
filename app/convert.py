@@ -78,3 +78,5 @@ def convert(directory):
         write_to_info_file(directory, "Starting zip archive creation\n")
         shutil.make_archive(f"instance/conversions/{directory}/output", "zip", f"instance/conversions/{directory}/dist")
         write_to_info_file(directory, "Created zip archive - ready for download")
+    else:
+        write_to_info_file(directory, "An error occured during conversion - please check that your python files run properly on python 3.12.8 and try again")
