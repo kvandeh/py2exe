@@ -6,6 +6,12 @@
 <style>
     .filepond {
         width: 100%;
+        box-shadow: 1px 1px 5px 0px var(--primary-color);
+        border-radius: var(--border-radius);
+    }
+
+    .filepond .filepond--panel-root {
+        background-color: var(--primary-color);
     }
 </style>
 {% endblock %}
@@ -19,7 +25,10 @@
     </p>
     <p>
         To convert your python project, please upload it below. You can upload a single <b>.py</b> file as well as a <b>zip</b> archive of multiple files. If you
-        are uploading multiple files in zip, please name the main file "main.py" or "run.py". If your project requires any python libraries, please include them in a <b>requirements.txt</b> file
+        are uploading multiple files in zip, please name the main file "main.py" or "run.py". 
+    </p>
+    <p>
+        If your project requires any python libraries, please include them in a <b>requirements.txt</b> file
         inside the zip (package names separated by newline). 
     </p>
 </div>

@@ -8,6 +8,7 @@ FilePond.setOptions({
             },
         },
     },
+    labelIdle: 'Drag & Drop your files or <span class="filepond--label-action"> Browse </span> <div>allowed filetypes: .py, .zip</div>',
 });
 
 FilePond.create(
