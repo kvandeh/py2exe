@@ -65,7 +65,7 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
+    width: calc(100vw - 1rem); /* - padding*2 */
     height: auto;
     border-bottom: 1px solid var(--division-line-color);
     height: 70px;
