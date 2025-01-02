@@ -7,16 +7,39 @@ def write_to_info_file(directory, message):
         info_file.write(message)
         info_file.flush()
 
-def run_pyinstaller(directory, filename):
+def create_venv(directory):
     initial_dir = os.getcwd()
     os.chdir(f"instance/conversions/{directory}")
     if os.name == 'nt': # if running on windows
-        _ = os.system(f"pyinstaller {filename} --onedir")
+        _ = os.system(f"virtualenv venv")
+        _ = os.system(f"venv\Scripts\python.exe -m pip install pyinstaller && venv\Scripts\python.exe -m pip install -r requirements.txt")
     else:
         os.environ["PATH"] = "/usr/bin"
         os.environ["WINEPREFIX"] = initial_dir+"/wine"
         os.environ["WINEPATH"] = initial_dir
-        _ = os.system(f"wine {initial_dir}/wine/drive_c/python3.12/python.exe -m PyInstaller {filename} --onedir")
+        _ = os.system(f"wine {initial_dir}/wine/drive_c/python3.12/python.exe -m virtualenv venv")
+        _ = os.system(f"wine venv\Scripts\python.exe -m pip install pyinstaller && wine venv\Scripts\python.exe -m pip install -r requirements.txt")
+    os.chdir(initial_dir)
+
+def run_pyinstaller(directory, filename, venv=False):
+    """
+    run pyinstaller - if venv=True, expect virtual environment in "venv/"
+    """
+    initial_dir = os.getcwd()
+    os.chdir(f"instance/conversions/{directory}")
+    if os.name == 'nt': # if running on windows
+        if venv:
+            _ = os.system(f"venv\Scripts\python.exe -m pyinstaller {filename} --onedir")
+        else:
+            _ = os.system(f"pyinstaller {filename} --onedir")
+    else:
+        os.environ["PATH"] = "/usr/bin"
+        os.environ["WINEPREFIX"] = initial_dir+"/wine"
+        os.environ["WINEPATH"] = initial_dir
+        if venv:
+            _ = os.system(f"wine venv/Scripts/python.exe -m PyInstaller {filename} --onedir")
+        else:
+            _ = os.system(f"wine {initial_dir}/wine/drive_c/python3.12/python.exe -m PyInstaller {filename} --onedir")
     os.chdir(initial_dir)
 
 def convert(directory):
@@ -43,7 +66,10 @@ def convert(directory):
             if not root_file:
                 write_to_info_file(directory, f"Conversion failed: Please rename the root file of your project to main.py or run.py")
                 return False
-            write_to_info_file(directory, f"Starting conversion - {root_file}\n")
+            if "requirements.txt" in os.listdir(f"instance/conversions/{directory}"):
+                write_to_info_file("Creating virtual environment")
+                create_venv(directory)
+            write_to_info_file(directory, f"Converting - {root_file}\n")
             run_pyinstaller(directory, root_file)
             break
 
