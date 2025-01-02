@@ -42,3 +42,7 @@ def view_conversion(conversion_id):
         if "download" in status:
             download = url_for('download_conversion', conversion_id=conversion_id)
     return render_template("view_conversion.html", status=status, download=download, filenames=original_files)
+
+@app.route('/about')
+def about():
+    return render_template('about.html')

@@ -14,7 +14,13 @@
 
 <body>
     <div class="navbar">
-        <a class="heading" href="{{ url_for('index') }}">py2exe</a>
+        <div>
+            <a class="heading" href="{{ url_for('index') }}">py2exe</a>
+            <div class="navbar-items">
+                <a id="navbar-convert" href="{{ url_for('convert') }}">convert</a>
+                <a id="navbar-about" href="{{ url_for('about') }}">about</a>
+            </div>
+        </div>
     </div>
     <div class="content">
         {% with messages = get_flashed_messages(with_categories=true) %}

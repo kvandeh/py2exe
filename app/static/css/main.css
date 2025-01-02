@@ -8,6 +8,8 @@
     --button-hover-color: #ffe83a;
     --link-color: var(--text-color);
     --navbar-bg-color: #000314;
+    --navbar-hover-color: #000f66;
+    --navbar-active-color: #060e3f;
     --division-line-color: #2c2a1a;
 }
 
@@ -22,13 +24,11 @@ body {
 .content {
     width: fit-content;
     min-width: 40vw;
-    max-width: min(400px, 90vw);
+    max-width: min(500px, 95vw);
     margin: 0 auto;
     margin-bottom: 60px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1vw;
-    padding-top: 120px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -63,13 +63,24 @@ p {
 
 .navbar {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: auto;
+    border-bottom: 1px solid var(--division-line-color);
+    height: 70px;
+    position: relative;
+    padding: .5rem;
+}
+
+.navbar > div {
+    display: flex;
     align-items: center;
     align-content: center;
+    justify-content: start;
+    min-width: min(500px, 95vw);
+    width: 40vw;
     position: fixed;
-    width: 100vw;
-    height: 70px;
-    border-bottom: 1px solid var(--division-line-color);
-    padding: .5rem;
     background-color: var(--navbar-bg-color);
 }
 
@@ -78,8 +89,43 @@ p {
     color: var(--text-color);
     text-decoration: none;
     font-weight: bold;
-    margin: 0 1rem;
     position: relative;
-    padding: 11px 14px 11px 14px;
+    margin-right: 2rem;
     font-family: "trebuchet ms", 'Roboto', sans-serif;
+}
+
+.navbar .navbar-items > *, .navbar-item {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 20px 14px 20px 14px;
+    border-radius: var(--border-radius);
+    position: relative;
+    cursor: pointer;
+    transition: background-color .07s;
+    text-transform: uppercase;
+}
+
+.navbar:not(.responsive) .navbar-items > *:hover, .navbar:not(.responsive) .navbar-item:hover {
+    background-color: var(--navbar-hover-color);
+}
+
+.navbar-items > .active, .navbar-item.active {
+    background-color: var(--navbar-active-color);
+}
+
+@media screen and (max-width: 450px) {
+    .navbar .navbar-items > *, .navbar-item {
+        text-transform: none;
+        padding: 20px 10px;
+    }
+
+    .navbar a.heading {
+        font-size: 2.5rem;
+        margin-right: .3rem;
+    }
+
+    .navbar {
+        padding: .5rem .1rem;
+    }
 }

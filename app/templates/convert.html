@@ -12,14 +12,14 @@
 
 {% block body %}
 <div>
-    <h1>Compile your python project to exe!</h1>
+    <h1>Convert your python project to exe!</h1>
     <p>
-        <b>py2exe</b> is a free online tool that compiles Python projects to executables in the cloud. It provides the simplest way to compile python files to exe from 
-        both windows or linux environment.
-        Whether you're a developer looking to share your Python application without requiring end-users to install 
-        Python or simply aiming for seamless distribution, <b>py2exe</b> simplifies the process.
+        <b>py2exe</b> provides a simple way to convert your python files to windows executable (.exe).
     </p>
-    <p>To convert your python project, please upload it below. You can upload a single <b>.py</b> file as well as a <b>zip</b> archive of multiple files.</p>
+    <p>
+        To convert your python project, please upload it below. You can upload a single <b>.py</b> file as well as a <b>zip</b> archive of multiple files. If you
+        are uploading multiple files in zip, please name the main file "main.py" or "run.py".  
+    </p>
 </div>
 
 <input type="file" 
@@ -29,4 +29,8 @@
 
 <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
 <script src="{{ url_for('static', filename='js/convert.js') }}"></script>
+
+<script>
+    document.getElementById("navbar-convert").classList.add("active")
+</script>
 {% endblock %}
