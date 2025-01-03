@@ -3,40 +3,25 @@
 {% block head %}
 <title>py2exe - convert python to exe online</title>
 <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
-<style>
-    .filepond {
-        width: 100%;
-        box-shadow: 1px 1px 5px 0px var(--primary-color);
-        border-radius: var(--border-radius);
-    }
-
-    .filepond .filepond--panel-root {
-        background-color: var(--primary-color);
-    }
-</style>
 {% endblock %}
 
 
 {% block body %}
-<div>
-    <h1>Convert your python project to exe!</h1>
-    <p>
-        <b>py2exe.com</b> provides a simple way to convert your python files to windows executable (.exe).
-    </p>
-    <p>
-        To convert your python project, please upload it below. You can upload a single <b>.py</b> file as well as a <b>zip</b> archive of multiple files. If you
-        are uploading multiple files in zip, please name the main file "main.py" or "run.py". 
-    </p>
-    <p>
-        If your project requires any python libraries, please include them in a <b>requirements.txt</b> file
-        inside the zip (package names separated by newline). 
-    </p>
-</div>
+<h1>Convert your python project to exe!</h1>
+<p style="color:#fffb; margin-top: -10px;margin-bottom:50px;">
+    <b>py2exe.com</b> provides a simple way to convert your python files to windows executable (.exe).
+    To convert your python project, please upload it below. You can upload a single <b>.py</b> file as well as a <b>zip</b> archive of multiple files. If you
+    are uploading multiple files in zip, please name the main file "main.py" or "run.py". 
+</p>
 
 <input type="file" 
     class="filepond"
     name="filepond" 
     data-max-files="1">
+
+<p style="color: #fff6; text-align: center;margin-top:10px;font-size:16px;">
+    *If your project requires any python libraries, please include them in a <b>requirements.txt</b> file inside the zip, with the package names separated by newline. 
+</p>
 
 <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
 <script src="{{ url_for('static', filename='js/convert.js') }}"></script>
