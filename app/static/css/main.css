@@ -1,7 +1,7 @@
 :root {
-    --bg-color: #000314;
-    --text-color: #fffcdd;
-    --primary-color: #fded6c;
+    --bg-color: #00020f;
+    --text-color: #fff;
+    --primary-color: #fff3;
     --secondary-color: #0f3234;
     --border-radius: 10px;
     --button-color: var(--primary-color);
@@ -22,17 +22,18 @@ body {
 }
 
 .content {
-    width: fit-content;
-    min-width: 40vw;
-    max-width: min(500px, 95vw);
+    width: min(90vw, 800px);
     margin: 0 auto;
     margin-bottom: 60px;
     margin-left: auto;
     margin-right: auto;
+
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    min-height: 900px;
     align-items: start;
+
+    justify-content: center;
 }
 
 a {
@@ -43,21 +44,34 @@ p {
     font-size: 1.2rem;
 }
 
-.button-link {
+.filepond--drop-label {
     display: inline-block;
     padding: 15px 25px;
     font-size: 16px;
     text-align: center;
     text-decoration: none;
-    background-color: var(--button-color);
+    background-color: #fffa;
     color: var(--bg-color);
     border: none;
     border-radius: var(--border-radius);
     cursor: pointer;
-    transition: background-color .2s;
+    min-height: max(30vh, 300px) !important;
+} .filepond--panel, .filepond--panel * {
+    background-color: #0000 !important;
 }
 
+.filepond {
+    width: 100%;
+    /* box-shadow: 1px 1px 5px 0px var(--primary-color); */
+    /* border-radius: var(--border-radius); */
+}
+
+/* .filepond .filepond--panel-root {
+    background-color: var(--primary-color);
+} */
+
 .button-link:hover {
+    cursor: pointer;
     background-color: var(--button-hover-color);
 }
 
@@ -65,27 +79,20 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: calc(100vw - 1rem); /* - padding*2 */
-    height: auto;
-    border-bottom: 1px solid var(--division-line-color);
-    height: 70px;
-    position: relative;
-    padding: .5rem;
+    background-color: #000520;
+    height: 80px;
 }
 
 .navbar > div {
     display: flex;
     align-items: center;
-    align-content: center;
-    justify-content: start;
+    justify-content: space-between;
     min-width: min(500px, 95vw);
-    width: 40vw;
-    position: fixed;
-    background-color: var(--navbar-bg-color);
+    width: min(90vw, 800px);
 }
 
 .navbar a.heading {
-    font-size: 3rem;
+    font-size: 36px;
     color: var(--text-color);
     text-decoration: none;
     font-weight: bold;
@@ -94,24 +101,20 @@ p {
     font-family: "trebuchet ms", 'Roboto', sans-serif;
 }
 
-.navbar .navbar-items > *, .navbar-item {
-    font-size: 1.2rem;
-    color: var(--text-color);
+.navbar-items {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+} .navbar-items a {
+    color: #fff3;
     text-decoration: none;
-    padding: 20px 14px 20px 14px;
-    border-radius: var(--border-radius);
-    position: relative;
+    font-size: 20px;
     cursor: pointer;
-    transition: background-color .07s;
     text-transform: uppercase;
 }
 
-.navbar:not(.responsive) .navbar-items > *:hover, .navbar:not(.responsive) .navbar-item:hover {
-    background-color: var(--navbar-hover-color);
-}
-
-.navbar-items > .active, .navbar-item.active {
-    background-color: var(--navbar-active-color);
+.navbar:not(.responsive) .navbar-items > *:hover, .navbar:not(.responsive) .navbar-item:hover, .navbar-items > .active {
+    color: #fff6;
 }
 
 @media screen and (max-width: 450px) {
